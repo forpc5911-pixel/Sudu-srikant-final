@@ -105,7 +105,7 @@ nav {
 #hero { margin-top: 72px; position: relative; height: calc(100vh - 72px); min-height: 580px; overflow: hidden; }
 .hero-bg {
   position: absolute; inset: 0;
-  background: url('https://arizto-assets-prod.s3-ap-southeast-2.amazonaws.com/public/profile-images/50896-1771807621-75fKmU0vKDBBNHikbpUZ1gaTswNCOIMM.jpg') center top / cover no-repeat;
+  background: url('https://arizto-assets-prod.s3-ap-southeast-2.amazonaws.com/public/profile-images/50896-1771807621-75fKmU0vKDBBNHikbpUZ1gaTswNCOIMM.jpg') center 20% / cover no-repeat;
   filter: brightness(0.42);
 }
 .hero-content { position: relative; z-index: 2; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 100px; max-width: 860px; }
@@ -792,8 +792,6 @@ footer { background: #111827; padding: 70px 0 30px; }
       </div>
       <div class="contact-form">
         <h3 class="form-heading">Request a Free Appraisal</h3>
-        <!-- Web3Forms: sends to sudu.s@arizto.co.nz -->
-        <!-- IMPORTANT: Replace YOUR_ACCESS_KEY_HERE with the key from web3forms.com after signing up with sudu.s@arizto.co.nz -->
         <form id="appraisalForm" novalidate>
           <input type="hidden" name="access_key" value="dfb27e48-79db-4007-9164-408c42f6dec8">
           <input type="hidden" name="subject" value="New Property Enquiry — Sudu Srikant Website">
@@ -912,7 +910,6 @@ footer { background: #111827; padding: 70px 0 30px; }
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
 
-    // Basic validation
     const required = form.querySelectorAll('[required]');
     let valid = true;
     required.forEach(field => {
@@ -961,7 +958,6 @@ footer { background: #111827; padding: 70px 0 30px; }
     }
   });
 
-  // Clear red border on input
   form.querySelectorAll('input, textarea, select').forEach(field => {
     field.addEventListener('input', () => { field.style.borderColor = ''; });
   });
