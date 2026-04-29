@@ -796,9 +796,10 @@ footer { background: #111827; padding: 70px 0 30px; }
 
 <script>
 // ============================================
-// PROPERTY DATA
+// PROPERTY DATA — default fallback
 // ============================================
-const PROPERTIES = [
+// NOTE: "let" (not const) so loadFromStorage() can replace it
+let PROPERTIES = [
   {
     id: 'karapiti',
     status: 'active',
@@ -1053,7 +1054,7 @@ function showPropertyDetail(id, fromPage) {
   badge.textContent = prop.status === 'sold' ? (prop.soldDate ? 'Sold — ' + prop.soldDate : 'Sold') : 'For Sale';
   badge.className = 'detail-status-badge ' + (prop.status === 'sold' ? 'sold' : 'for-sale');
   document.getElementById('detail-address').textContent = prop.address;
-  document.getElementById('detail-suburb').textContent = prop.suburb;
+  document.getElementById('detail-suburb').textContent = prop.suburb + (prop.city && !prop.suburb.includes(prop.city) ? ', ' + prop.city : '');
 
   // Gallery
   document.getElementById('gallery-main').src = prop.images[0] || '';
@@ -1131,6 +1132,7 @@ function buildCard(prop, fromPage) {
   const thumb = prop.images[0] || 'https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&q=80';
   const statusLabel = isSold ? (prop.soldDate ? 'Sold — ' + prop.soldDate : 'Sold') : 'For Sale';
   const metaParks = prop.carparks > 0 ? `<span>🚗 ${prop.carparks}</span>` : '';
+  const suburbDisplay = prop.suburb || ((prop.city || '') + (prop.city ? '' : ''));
   return `
     <div class="listing-card" onclick="showPropertyDetail('${prop.id}','${fromPage}')">
       <div class="listing-img-wrap">
@@ -1141,7 +1143,7 @@ function buildCard(prop, fromPage) {
       <span class="listing-status${isSold ? ' sold' : ''}">${statusLabel}</span>
       <div class="listing-body">
         <div class="listing-addr">${prop.address}</div>
-        <div class="listing-suburb">${prop.suburb}</div>
+        <div class="listing-suburb">${suburbDisplay}</div>
         <div class="listing-meta">
           <span>🛏 ${prop.beds}</span>
           <span>🚿 ${prop.baths}</span>
@@ -1224,9 +1226,30 @@ function showMsg(text, type) {
 }
 
 // ============================================
-// INIT
+// INIT — load from shared storage (synced with admin panel)
 // ============================================
-renderHomeGrids();
+const STORAGE_KEY = "sudu_live_properties";
+
+async function loadFromStorage() {
+  try {
+    if (window.storage && typeof window.storage.get === 'function') {
+      const r = await window.storage.get(STORAGE_KEY, true);
+      if (r && r.value) {
+        const parsed = JSON.parse(r.value);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // Replace the default PROPERTIES with whatever the admin saved
+          PROPERTIES = parsed;
+        }
+      }
+    }
+  } catch(e) {
+    // Storage unavailable or empty — fall back to hardcoded data above silently
+  }
+  // Always render after attempting load (whether from storage or fallback)
+  renderHomeGrids();
+}
+
+loadFromStorage();
 </script>
 </body>
 </html>
