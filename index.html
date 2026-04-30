@@ -1228,27 +1228,19 @@ function showMsg(text, type) {
 // ============================================
 // INIT — load from shared storage (synced with admin panel)
 // ============================================
-const STORAGE_KEY = "sudu_live_properties";
-
+const FIREBASE_URL = "https://sudu-listings-default-rtdb.firebaseio.com";
 async function loadFromStorage() {
   try {
-    if (window.storage && typeof window.storage.get === 'function') {
-      const r = await window.storage.get(STORAGE_KEY, true);
-      if (r && r.value) {
-        const parsed = JSON.parse(r.value);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          // Replace the default PROPERTIES with whatever the admin saved
-          PROPERTIES = parsed;
-        }
-      }
+    const res = await fetch(FIREBASE_URL + "/properties.json");
+    const data = await res.json();
+    if (data && (Array.isArray(data) ? data.length > 0 : Object.keys(data).length > 0)) {
+      PROPERTIES = Array.isArray(data) ? data : Object.values(data);
     }
   } catch(e) {
-    // Storage unavailable or empty — fall back to hardcoded data above silently
+    // Firebase unavailable — fall back to hardcoded data silently
   }
-  // Always render after attempting load (whether from storage or fallback)
   renderHomeGrids();
 }
-
 loadFromStorage();
 </script>
 </body>
