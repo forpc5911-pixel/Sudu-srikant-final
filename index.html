@@ -362,9 +362,9 @@ footer { background: #111D27; padding: 70px 0 30px; }
   <ul class="nav-links">
     <li><a onclick="showHome()">Home</a></li>
     <li><a onclick="showListingsPage()">Properties</a></li>
-    <li><a onclick="showHome(); scrollTo('about')">About</a></li>
-    <li><a onclick="showHome(); scrollTo('testimonials')">Testimonials</a></li>
-    <li><a onclick="showHome(); scrollTo('contact')" class="nav-cta-btn">Get In Touch</a></li>
+    <li><a onclick="showHome(); scrollToSection('about')">About</a></li>
+    <li><a onclick="showHome(); scrollToSection('testimonials')">Testimonials</a></li>
+    <li><a onclick="showHome(); scrollToSection('contact')" class="nav-cta-btn">Get In Touch</a></li>
   </ul>
   <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
 </nav>
@@ -373,9 +373,9 @@ footer { background: #111D27; padding: 70px 0 30px; }
 <div class="mobile-menu" id="mobileMenu">
   <a onclick="showHome(); closeMobile()">Home</a>
   <a onclick="showListingsPage(); closeMobile()">Properties</a>
-  <a onclick="showHome(); scrollTo('about'); closeMobile()">About</a>
-  <a onclick="showHome(); scrollTo('testimonials'); closeMobile()">Testimonials</a>
-  <a onclick="showHome(); scrollTo('contact'); closeMobile()">Get In Touch</a>
+  <a onclick="showHome(); scrollToSection('about'); closeMobile()">About</a>
+  <a onclick="showHome(); scrollToSection('testimonials'); closeMobile()">Testimonials</a>
+  <a onclick="showHome(); scrollToSection('contact'); closeMobile()">Get In Touch</a>
 </div>
 
 <!-- ============================================
@@ -391,7 +391,7 @@ footer { background: #111D27; padding: 70px 0 30px; }
       <h1 class="hero-title">What's Your Home<br>Really Worth?</h1>
       <p class="hero-sub">Sudu Srikant combines deep local knowledge with honest, client-first advice to deliver outstanding results across Central and West Auckland.</p>
       <div class="hero-btns">
-        <span class="btn-gold" onclick="scrollTo('contact')">Free Appraisal</span>
+        <span class="btn-gold" onclick="scrollToSection('contact')">Free Appraisal</span>
         <span class="btn-white" onclick="showListingsPage()">View Listings</span>
       </div>
     </div>
@@ -426,8 +426,8 @@ footer { background: #111D27; padding: 70px 0 30px; }
             <span class="q-tag">Clear Communication</span><span class="q-tag">Great Negotiation</span><span class="q-tag">Local Expert</span>
           </div>
           <div class="about-cta">
-            <span class="btn-dark" onclick="scrollTo('contact')">Free Appraisal</span>
-            <span class="btn-outline-dark" onclick="scrollTo('testimonials')">Read Reviews</span>
+            <span class="btn-dark" onclick="scrollToSection('contact')">Free Appraisal</span>
+            <span class="btn-outline-dark" onclick="scrollToSection('testimonials')">Read Reviews</span>
           </div>
         </div>
       </div>
@@ -526,8 +526,8 @@ footer { background: #111D27; padding: 70px 0 30px; }
       <h2>Ready to Make Your Move?</h2>
       <p>Whether you're buying, selling, or simply curious about the market — I'd love to hear from you.</p>
       <div class="cta-btns">
-        <span class="btn-white-solid" onclick="scrollTo('contact')">Contact Me</span>
-        <span class="btn-border-white" onclick="scrollTo('contact')">Request Appraisal</span>
+        <span class="btn-white-solid" onclick="scrollToSection('contact')">Contact Me</span>
+        <span class="btn-border-white" onclick="scrollToSection('contact')">Request Appraisal</span>
       </div>
     </div>
   </section>
@@ -598,18 +598,18 @@ footer { background: #111D27; padding: 70px 0 30px; }
           <h4>Quick Links</h4>
           <ul>
             <li><a onclick="showListingsPage()">Properties</a></li>
-            <li><a onclick="scrollTo('about')">About Me</a></li>
-            <li><a onclick="scrollTo('testimonials')">Testimonials</a></li>
-            <li><a onclick="scrollTo('contact')">Contact</a></li>
+            <li><a onclick="scrollToSection('about')">About Me</a></li>
+            <li><a onclick="scrollToSection('testimonials')">Testimonials</a></li>
+            <li><a onclick="scrollToSection('contact')">Contact</a></li>
           </ul>
         </div>
         <div class="footer-col">
           <h4>Services</h4>
           <ul>
-            <li><a onclick="scrollTo('contact')">Sell With Me</a></li>
-            <li><a onclick="scrollTo('contact')">Buy With Me</a></li>
-            <li><a onclick="scrollTo('contact')">Free Appraisal</a></li>
-            <li><a onclick="scrollTo('marketing')">Marketing</a></li>
+            <li><a onclick="scrollToSection('contact')">Sell With Me</a></li>
+            <li><a onclick="scrollToSection('contact')">Buy With Me</a></li>
+            <li><a onclick="scrollToSection('contact')">Free Appraisal</a></li>
+            <li><a onclick="scrollToSection('marketing')">Marketing</a></li>
           </ul>
         </div>
         <div class="footer-col">
@@ -663,8 +663,8 @@ footer { background: #111D27; padding: 70px 0 30px; }
         </div>
         <div class="footer-col"><h4>Navigation</h4><ul>
           <li><a onclick="showHome()">Home</a></li>
-          <li><a onclick="showHome(); scrollTo('about')">About</a></li>
-          <li><a onclick="showHome(); scrollTo('contact')">Contact</a></li>
+          <li><a onclick="showHome(); scrollToSection('about')">About</a></li>
+          <li><a onclick="showHome(); scrollToSection('contact')">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h4>Contact</h4><ul>
           <li><a href="tel:0226810578">022 681 0578</a></li>
@@ -726,7 +726,7 @@ footer { background: #111D27; padding: 70px 0 30px; }
       <div class="sidebar-price-box">
         <div class="sidebar-price-label">Price Guide</div>
         <div class="sidebar-price" id="detail-price"></div>
-        <button class="sidebar-cta-btn" onclick="showHome(); setTimeout(()=>scrollTo('contact'),100)">Enquire Now</button>
+        <button class="sidebar-cta-btn" onclick="showHome(); setTimeout(()=>scrollToSection('contact'),100)">Enquire Now</button>
         <a href="tel:0226810578" class="sidebar-cta-btn outline" style="text-decoration:none;display:block;text-align:center;padding:15px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,0.8);border:2px solid rgba(255,255,255,0.25);cursor:pointer;font-family:'Montserrat',sans-serif;background:transparent;">📞 Call Sudu</a>
       </div>
 
@@ -768,7 +768,7 @@ footer { background: #111D27; padding: 70px 0 30px; }
         <div class="footer-col"><h4>Navigation</h4><ul>
           <li><a onclick="showHome()">Home</a></li>
           <li><a onclick="showListingsPage()">All Properties</a></li>
-          <li><a onclick="showHome(); setTimeout(()=>scrollTo('contact'),100)">Contact</a></li>
+          <li><a onclick="showHome(); setTimeout(()=>scrollToSection('contact'),100)">Contact</a></li>
         </ul></div>
         <div class="footer-col"><h4>Contact</h4><ul>
           <li><a href="tel:0226810578">022 681 0578</a></li>
@@ -1116,7 +1116,7 @@ function goBackFromDetail() {
   }
 }
 
-function scrollTo(id) {
+function scrollToSection(id) {
   setTimeout(() => {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: 'smooth' });
